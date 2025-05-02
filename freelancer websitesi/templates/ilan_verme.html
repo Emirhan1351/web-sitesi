@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İşini Oluştur</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5ebe0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2d4739;
+            padding: 10px 20px;
+        }
+
+        .navbar .logo {
+            color: white;
+            font-size: 1.5em;
+            text-decoration: none;
+        }
+
+        .navbar .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .navbar .buttons a {
+            text-decoration: none;
+            color: white;
+            background-color: #4d6655;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .navbar .buttons a:hover {
+            background-color: #6b8571;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: "Georgia", serif;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #5e5c5c;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #4b4949;
+        }
+
+        .file-upload {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="#" class="logo">Freelancer</a>
+        <div class="buttons">
+            <a href="/ilan_verme">İşinizi Oluşturun</a>
+            <a href="/register">Kayıt Ol</a>
+            <a href="{{ url_for('home') }}">Giriş Yap</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>İşini Oluştur</h1>
+        <form id="job-form">
+            <!-- İş Başlığı -->
+            <label for="job-name">Hangi işte hizmet vereceksiniz?</label>
+            <input type="text" id="job-name" name="job-name" placeholder="Buraya işinizi ekleyin" required>
+
+            <!-- İş Açıklaması -->
+            <label for="job-description">İşini nasıl tanımlarsın?</label>
+            <textarea id="job-description" name="job-description" placeholder="Vereceğiniz hizmeti açıklayın" rows="5" required></textarea>
+
+            <!-- Ücret Bilgisi -->
+            <label for="job-price">Ücretin ne kadar olacak?</label>
+            <input type="text" id="job-price" name="job-price" placeholder="Fiyat girin" required>
+
+            <!-- Dosya Yükleme -->
+            <label for="job-file">Önceden yaptığınız işler ile ilgili örnekler ekleyebilirsiniz</label>
+            <input type="file" id="job-file" name="job-file" class="file-upload">
+
+            <!-- Form Gönder Butonu -->
+            <button type="submit">Gönder</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("job-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const jobName = document.getElementById("job-name").value;
+            const jobDescription = document.getElementById("job-description").value;
+            const jobPrice = document.getElementById("job-price").value;
+            const jobFile = document.getElementById("job-file").files[0];
+
+            // Form verilerini konsola yazdır
+            console.log("İş Adı:", jobName);
+            console.log("İş Açıklaması:", jobDescription);
+            console.log("Ücret:", jobPrice);
+            console.log("Yüklenen Dosya:", jobFile);
+
+            alert("Başvurunuz alındı! Teşekkür ederiz.");
+        });
+    </script>
+</body>
+</html>
+
